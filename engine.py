@@ -32,10 +32,6 @@ class Engine:
 
     def render(self, console: Console, context: Context) -> None:
         self.game_map.render(console)
-        x = 0
-        y = 45
-        console.print(x, y, "Esc to Quit", (255, 255, 255))
-        console.print(x, y+1, "↑↓←→ to Move", (255, 255, 255))
         for entity in self.entities:
             console.print(entity.x, entity.y, entity.char, fg=entity.color)
 
