@@ -21,7 +21,7 @@ def main() -> None:
     event_handler = EventHandler()
 
     player = Entity(int(screen_width / 2), int(screen_height / 2), "@", (255, 255, 255), "")
-    statue = Entity(int(screen_width /2 -5), int(screen_height / 2), "?", (255, 255, 0), "Statue with a scary face")
+    statue = Entity(int(screen_width /2 -5), int(screen_height / 2), "▒", (255, 255, 0), "Statue with a scary face")
     entities = {statue, player}
 
 
