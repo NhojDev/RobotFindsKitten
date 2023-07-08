@@ -22,6 +22,7 @@ class Entity:
         color: Tuple[int, int, int] = (255, 255, 255),
         name: str = "<Unnamed>",
         blocks_movement: bool = False,
+        success = False
     ):
         self.x = x
         self.y = y

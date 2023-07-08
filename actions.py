@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+import tcod
+from tcod.context import Context
+
 
 if TYPE_CHECKING:
     from engine import Engine
@@ -44,8 +47,8 @@ class MeleeAction(ActionWithDirection):
         if not target:
             return  # No entity to attack.
 
-        print(f"You kick the {target.name}, much to its annoyance!")
-
+    
+        print(f"{target.name}")
 
 class MovementAction(ActionWithDirection):
     def perform(self, engine: Engine, entity: Entity) -> None:
