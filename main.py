@@ -1,51 +1,74 @@
-#!/usr/bin/env python3
-import tcod
+from __future__ import annotations
 
-from engine import Engine
-from entity import Entity
-from game_map import GameMap
-from input_handlers import EventHandler
+from typing import TYPE_CHECKING
 
-
-def main() -> None:
-    screen_width = 80
-    screen_height = 50
-
-    map_width = 80
-    map_height = 45
-
-    tileset = tcod.tileset.load_tilesheet(
-        "dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD
-    )
-
-    event_handler = EventHandler()
-
-    player = Entity(int(screen_width / 2), int(screen_height / 2), "#", (255, 255, 255), "", None)
-    statue = Entity(int(screen_width /2 -5), int(screen_height / 2), "▒", (255, 255, 0), "A statue of a weeping angel.", None)
-    kitten = Entity(int(screen_width-20), int(screen_height-3), "?", (168, 105, 29), "Robot found the kitten!", True)
-    entities = {statue, player, kitten}
+if TYPE_CHECKING:
+    from engine import Engine
+    from entity import Entity
 
 
-    game_map = GameMap(map_width, map_height)
+class Action:
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        """Perform this action with the objects needed to determine its scope.
 
-    engine = Engine(entities = entities, event_handler = event_handler, game_map = game_map, player = player)
+        `engine` is the scope this action is being performed in.
 
-    with tcod.context.new_terminal(
-        screen_width,
-        screen_height,
-        tileset=tileset,
-        title="Robot Finds Kitten",
-        vsync=True,
-    ) as context:
-        
-        root_console = tcod.Console(screen_width, screen_height, order="F")
-        while True:
-            engine.render(console = root_console, context = context)
+        `entity` is the object performing the action.
 
-            events = tcod.event.wait()
-
-            engine.handle_events(events)
+        This method must be overridden by Action subclasses.
+        """
+        raise NotImplementedError()
 
 
-if __name__ == "__main__":
-    main()
+class EscapeAction(Action):
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        raise SystemExit()
+
+
+class ActionWithDirection(Action):
+    def __init__(self, dx: int, dy: int):
+        super().__init__()
+
+        self.dx = dx
+        self.dy = dy
+
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        raise NotImplementedError()
+
+
+class MeleeAction(ActionWithDirection):
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        dest_x = entity.x + self.dx
+        dest_y = entity.y + self.dy
+        target = engine.game_map.get_blocking_entity_at_location(dest_x, dest_y)
+        if not target:
+            return  # No entity to attack.
+
+        print(f"You kick the {target.name}, much to its annoyance!")
+
+
+class MovementAction(ActionWithDirection):
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        dest_x = entity.x + self.dx
+        dest_y = entity.y + self.dy
+
+        if not engine.game_map.in_bounds(dest_x, dest_y):
+            return  # Destination is out of bounds.
+        if not engine.game_map.tiles["walkable"][dest_x, dest_y]:
+            return  # Destination is blocked by a tile.
+        if engine.game_map.get_blocking_entity_at_location(dest_x, dest_y):
+            return  # Destination is blocked by an entity.
+
+        entity.move(self.dx, self.dy)
+
+
+class BumpAction(ActionWithDirection):
+    def perform(self, engine: Engine, entity: Entity) -> None:
+        dest_x = entity.x + self.dx
+        dest_y = entity.y + self.dy
+
+        if engine.game_map.get_blocking_entity_at_location(dest_x, dest_y):
+            return MeleeAction(self.dx, self.dy).perform(engine, entity)
+
+        else:
+            return MovementAction(self.dx, self.dy).perform(engine, entity)
