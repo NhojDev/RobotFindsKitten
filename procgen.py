@@ -94,8 +94,8 @@ def generate_dungeon(
     rooms: List[RectangularRoom] = []
 
     for r in range(max_rooms):
-        room_width = random.randint(room_min_size, room_max_size)
-        room_height = random.randint(room_min_size, room_max_size)
+        room_width = map_width-1
+        room_height = map_height-1
 
         x = random.randint(0, dungeon.width - room_width - 1)
         y = random.randint(0, dungeon.height - room_height - 1)
