@@ -44,6 +44,4 @@ Question 7: What would a "AAA" version of your game look like? Is what you have 
 
 ## Reference
 
-Most of the things in this Project was referenced from [Yet Another Roughlike Tutorial](http://rogueliketutorials.com/tutorials/tcod/v2/)
-
-The only I wanted to add to Robot Finds Kitten was the Field of View element which is pretty far down the list. However, to my despair, they keep changing the logic throughout the tutorial so this project ending up being basically parts 1-5 with modifications.
+Source Code was referenced from [Yet Another Roughlike Tutorial](http://rogueliketutorials.com/tutorials/tcod/v2/)

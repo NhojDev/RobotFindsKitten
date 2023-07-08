@@ -20,7 +20,7 @@ def main() -> None:
     room_min_size = 80
     max_rooms = 1
 
-    max_monsters_per_room = 2
+    max_monsters_per_room = 10
 
     tileset = tcod.tileset.load_tilesheet(
         "dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD
@@ -46,7 +46,7 @@ def main() -> None:
         screen_width,
         screen_height,
         tileset=tileset,
-        title="Yet Another Roguelike Tutorial",
+        title="Robot Finds Kitten",
         vsync=True,
     ) as context:
         root_console = tcod.Console(screen_width, screen_height, order="F")
