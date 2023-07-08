@@ -20,9 +20,10 @@ def main() -> None:
 
     event_handler = EventHandler()
 
-    player = Entity(int(screen_width / 2), int(screen_height / 2), "@", (255, 255, 255), "")
-    statue = Entity(int(screen_width /2 -5), int(screen_height / 2), "▒", (255, 255, 0), "Statue with a scary face")
-    entities = {statue, player}
+    player = Entity(int(screen_width / 2), int(screen_height / 2), "#", (255, 255, 255), "", None)
+    statue = Entity(int(screen_width /2 -5), int(screen_height / 2), "▒", (255, 255, 0), "A statue of a weeping angel.", None)
+    kitten = Entity(int(screen_width-20), int(screen_height-3), "?", (168, 105, 29), "Robot found the kitten!", True)
+    entities = {statue, player, kitten}
 
 
     game_map = GameMap(map_width, map_height)
