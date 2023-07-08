@@ -16,10 +16,6 @@ Enter the following line.
 python main.py
 ```
 
-```bash
-pip install tcod
-```
-
 ## Questions and Answers
 
 Question 1: Pick a player experience and feeling to target for this simple game. For example, you might want to make it energizing instead of zenlike, make it a hard grind or a quick jaunt, etc.
