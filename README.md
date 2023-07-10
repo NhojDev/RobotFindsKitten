@@ -1,4 +1,5 @@
 # RobotFindsKitten
+John Pham
 
 ## Installation
 Use package manager [pip](https://pip.pypa.io/en/stable/) to install to tcod
@@ -42,11 +43,15 @@ After answering Question 4, do whatever testing and inspection needs to be done 
 
 Question 5: What was the playtester's experience? Did it match your expectations?
 
-**The player felt frustration and grind. Which matches **
+**The play tester felt a bit frustrated and grind with the fog. Which met the grind exerience I looked for. They felt indifferent about the weeping angel statue.**
 
 Question 6: How does all this correlate with what you've read so far in The Book?
 
+**This correlates with the section "The Designer creates the Experience", where it describes in a section that what I intend for an experience might now what everyone experiences. A good example of this in my Robot Finds Kitten rendition, is how I thought that making one of the objects stand out from the rest would deliever on the experience of mystery when it instead did not.**
+
 Question 7: What would a "AAA" version of your game look like? Is what you have done here helpful in visualizing that? Is the playtesting you've done relevant?
+
+**I think a "AAA" version of my game would be more able to deliver the experience I'm looking for since I was somewhat limited on what I could've done. What I've done here is super helpful in visualizing it since I can kinda feel what is missing to deliver that full experience that I want the player to feel. For example, while I think it is possible to deliver a mysterious experience with a 2d game, I think it will be easier on a 3D version since you can actually feel like you're there more than on a 2d plane. The playtesting I did was super helpful since it gave me a different perspective on how others might percieve my design.**
 
 ## Reference
 
