@@ -3,6 +3,7 @@ from typing import Iterable, Any
 from tcod.context import Context
 from tcod.console import Console
 from tcod.map import compute_fov
+from message_log import MessageLog
 
 from entity import Entity
 from game_map import GameMap
@@ -15,7 +16,7 @@ class Engine:
         self.game_map = game_map
         self.player = player
         self.update_fov()
-        self.console: Console
+        self.message_log = MessageLog()
 
     def handle_enemy_turns(self) -> None:
         for entity in self.game_map.entities - {self.player}:
@@ -37,12 +38,14 @@ class Engine:
         self.game_map.visible[:] = compute_fov(
             self.game_map.tiles["transparent"],
             (self.player.x, self.player.y),
-            radius=8,
+            radius=4,
         )
 
     def render(self, console: Console, context: Context) -> None:
         self.game_map.render(console)
         self.console = console
+
+        self.message_log.render(console=console, x=21, y=45, width=40, height=5)
 
         context.present(console)
 

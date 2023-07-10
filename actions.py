@@ -49,7 +49,7 @@ class MeleeAction(ActionWithDirection):
         #if target.success:
 
 
-        print(f"{target.desc}")
+        engine.message_log.add_message(f"{target.desc}")
 
 class MovementAction(ActionWithDirection):
     def perform(self, engine: Engine, entity: Entity) -> None:

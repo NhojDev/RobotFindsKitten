@@ -3,6 +3,8 @@ import copy
 
 import tcod
 
+import color
+
 from engine import Engine
 import entity_gen
 from input_handlers import EventHandler
@@ -14,7 +16,7 @@ def main() -> None:
     screen_height = 50
 
     map_width = 80
-    map_height = 45
+    map_height = 43
 
     room_max_size = 80
     room_min_size = 80
@@ -41,6 +43,8 @@ def main() -> None:
     )
 
     engine = Engine(event_handler=event_handler, game_map=game_map, player=player)
+
+    engine.message_log.add_message("Please Find the Kitten!", color.welcome_text)
 
     with tcod.context.new_terminal(
         screen_width,
