@@ -22,7 +22,8 @@ class Entity:
         color: Tuple[int, int, int] = (255, 255, 255),
         name: str = "<Unnamed>",
         blocks_movement: bool = False,
-        success = False
+        desc: str = "<None>",
+        success: bool = False
     ):
         self.x = x
         self.y = y
@@ -30,6 +31,8 @@ class Entity:
         self.color = color
         self.name = name
         self.blocks_movement = blocks_movement
+        self.desc = desc
+        self.success = success
 
     def spawn(self: T, gamemap: GameMap, x: int, y: int) -> T:
         """Spawn a copy of this instance at the given location."""

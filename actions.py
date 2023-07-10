@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-import tcod
-from tcod.context import Context
+import game_map
+import tcod.console
 
 
 if TYPE_CHECKING:
@@ -46,9 +46,10 @@ class MeleeAction(ActionWithDirection):
         target = engine.game_map.get_blocking_entity_at_location(dest_x, dest_y)
         if not target:
             return  # No entity to attack.
+        #if target.success:
 
-    
-        print(f"{target.name}")
+
+        print(f"{target.desc}")
 
 class MovementAction(ActionWithDirection):
     def perform(self, engine: Engine, entity: Entity) -> None:
