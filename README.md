@@ -42,6 +42,8 @@ After answering Question 4, do whatever testing and inspection needs to be done 
 
 Question 5: What was the playtester's experience? Did it match your expectations?
 
+**The player felt frustration and grind. Which matches **
+
 Question 6: How does all this correlate with what you've read so far in The Book?
 
 Question 7: What would a "AAA" version of your game look like? Is what you have done here helpful in visualizing that? Is the playtesting you've done relevant?
