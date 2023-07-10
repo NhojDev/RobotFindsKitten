@@ -53,7 +53,16 @@ def place_entities(
         y = random.randint(room.y1 + 1, room.y2 - 1)
 
         if not any(entity.x == x and entity.y == y for entity in dungeon.entities):
-                entity_gen.statue.spawn(dungeon, x, y)
+                if i == 0:
+                    entity_gen.statue.spawn(dungeon, x, y)
+                if i == 1:
+                    entity_gen.kitten.spawn(dungeon, x, y)
+                if i == 2:
+                    entity_gen.yarn.spawn(dungeon, x, y)
+                if i == 3:
+                    entity_gen.cat_toys.spawn(dungeon, x, y)
+                if i == 4:
+                    entity_gen.fish_bones.spawn(dungeon, x, y)
 
 
 def tunnel_between(
