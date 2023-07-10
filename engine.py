@@ -15,10 +15,11 @@ class Engine:
         self.game_map = game_map
         self.player = player
         self.update_fov()
+        self.console: Console
 
     def handle_enemy_turns(self) -> None:
         for entity in self.game_map.entities - {self.player}:
-            pass
+            print("\033c", end="")
 
     def handle_events(self, events: Iterable[Any]) -> None:
         for event in events:
@@ -38,12 +39,14 @@ class Engine:
             (self.player.x, self.player.y),
             radius=8,
         )
-        # If a tile is "visible" it should be added to "explored".
-        self.game_map.explored |= self.game_map.visible
 
     def render(self, console: Console, context: Context) -> None:
         self.game_map.render(console)
+        self.console = console
 
         context.present(console)
 
         console.clear()
+    
+    def success(self, console: Console, context: Context) -> None:
+        self.console.print()
