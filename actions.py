@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 import game_map
 import tcod.console
+import color
 
 
 if TYPE_CHECKING:
@@ -47,9 +48,14 @@ class MeleeAction(ActionWithDirection):
         if not target:
             return  # No entity to attack.
         #if target.success:
+        if target.name == "statue":
+            engine.message_log.add_message(f"{target.desc}", color.red)
 
+        elif target.name == "kitten":
+            engine.message_log.add_message(f"{target.desc}", color.green)
 
-        engine.message_log.add_message(f"{target.desc}")
+        else:
+            engine.message_log.add_message(target.desc)
 
 class MovementAction(ActionWithDirection):
     def perform(self, engine: Engine, entity: Entity) -> None:

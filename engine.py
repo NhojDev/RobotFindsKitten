@@ -38,14 +38,14 @@ class Engine:
         self.game_map.visible[:] = compute_fov(
             self.game_map.tiles["transparent"],
             (self.player.x, self.player.y),
-            radius=4,
+            radius=6,
         )
 
     def render(self, console: Console, context: Context) -> None:
         self.game_map.render(console)
         self.console = console
 
-        self.message_log.render(console=console, x=21, y=45, width=40, height=5)
+        self.message_log.render(console=console, x=30, y=45, width=40, height=5)
 
         context.present(console)
 
