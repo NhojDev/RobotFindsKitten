@@ -11,11 +11,22 @@ pip install tcod
 ## Usage
 Open the folder in a terminal command line.
 
+Make sure you have python installed.
+
 Enter the following line.
 
 ```bash
 python main.py
 ```
+
+## Description
+I wanted to make the game experience more of a grind and have little bit of mystery vibe to Robot Finds Kitten so I added a fog around the player to make harder to see all the objects. I also added items that basically don't belong among the other items so try and create a sense of mystery to the game. 
+
+# How it went
+It was such a struggle to implement since I had to be careful in modifying the code while still ensuring it work correctly. The biggest time consumer was the fog and the message log since they were kinda hard to figure out and took a lot longer than initially anticpated. 
+
+# What still needs to be done?
+I think still need an endscreen for when you find the kitten. For now I just made it have green text saying you found the kitten, instead of a victory screen.
 
 ## Questions and Answers
 
